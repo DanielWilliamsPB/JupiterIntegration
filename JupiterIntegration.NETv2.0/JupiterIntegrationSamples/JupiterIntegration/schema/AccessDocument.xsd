@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+           targetNamespace="x-schema:AccessDocument.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="s3access">
+	  <xs:complexType>
+	    <xs:sequence>
+	      <xs:element type="xs:string" name="user"/>
+	      <xs:element type="xs:string" name="keyid"/>
+	      <xs:element type="xs:string" name="secretkey"/>
+	      <xs:element type="xs:string" name="bucket"/>
+	      <xs:element type="xs:string" name="postqueue"/>
+	    </xs:sequence>
+	  </xs:complexType>
+   </xs:element>
+</xs:schema>

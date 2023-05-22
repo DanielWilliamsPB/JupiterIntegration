@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="x-schema:BatchContent.xsd"
+           xmlns:x="x-schema:AccessDocument.xsd" 
+           xmlns:io="x-schema:InventoryOrder.xsd" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+           
+<xs:import namespace="x-schema:AccessDocument.xsd" schemaLocation="AccessDocument.xsd"/>
+<xs:import namespace="x-schema:InventoryOrder.xsd" schemaLocation="InventoryOrder.xsd"/>
+
+  <xs:element name="BatchContent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="BatchItem" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>      
+	          <xs:element type="xs:string" name="companyName"/>
+	          <xs:element type="xs:string" name="jobCode"/>
+	          <xs:element type="xs:string" name="userDescription"/>
+	          <xs:element type="xs:int" name="batchUid"/>
+	          <xs:element type="xs:int" name="deliveryUid"/>
+	          <xs:element type="xs:int" name="status"/>
+	          <xs:element type="xs:dateTime" name="lastChangeDate"/>
+	          <xs:element type="xs:long" name="fileSize"/>
+	          <xs:element type="xs:int" name="imageCount"/>
+	          <xs:element type="xs:int" name="fileCount"/>
+	          <xs:element type="xs:string" name="md5sum"/>
+	          <xs:element type="xs:string" name="letterClass"/>
+	          <xs:element type="xs:string" name="documentFormat"/>
+	          <xs:element type="xs:string" name="pageSize"/>
+	          <xs:element type="xs:string" name="printType"/>
+	          <xs:element type="xs:string" name="envelopeType"/>
+	          <xs:element type="xs:string" name="colourProcess"/>
+	          <xs:element type="xs:int" name="printLocation"/>
+		      <xs:element name="CourierDetail" maxOccurs="unbounded" minOccurs="0">
+		          <xs:complexType>
+		            <xs:sequence>
+			          <xs:element type="xs:int" name="CourierId"/>
+			          <xs:element type="xs:string" name="TrackingId"/>
+		            </xs:sequence>
+		          </xs:complexType>
+		      </xs:element>      
+	          <xs:element type="xs:boolean" name="markedForChange"/>
+              <xs:element ref="io:InventoryOrder"/>
+            </xs:sequence>
+	      </xs:complexType>      
+        </xs:element>
+        <xs:element ref="x:s3access"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

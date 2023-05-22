@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" targetNamespace="x-schema:BasketContent.xsd"
+	xmlns="x-schema:BasketContent.xsd"
+	xmlns:io="x-schema:BasketContent.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="BasketDocument">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:int" name="basketId" />
+				<xs:element type="xs:string" name="clientOrderId" />
+				<xs:element type="xs:string" name="billingAccount" />
+				<xs:element type="xs:int" name="deliveryId" />
+				<xs:element type="xs:string" name="orderType" />
+				<xs:element type="xs:int" name="printLocation" />
+				<xs:element type="xs:dateTime" name="orderDateTime" />
+				<xs:element type="xs:boolean" name="shipPartials" />
+				<xs:element name="BasketShippingDetail" type="io:BasketItemShippingDetailType" />
+				<xs:element name="notes" type="xs:string" />
+
+				<xs:element name="BasketItemProductList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Product" type="io:ProductDocument"
+								maxOccurs="unbounded" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="productIdentifier">
+    <xs:simpleContent>
+        <xs:extension base="xs:string">
+    	    <xs:attribute name="id" type="xs:int" />
+    	    <xs:attribute name="repositoryid" type="xs:int" />
+        </xs:extension>
+    </xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="ProductDocument">
+		<xs:sequence>
+			<xs:element type="xs:int" name="productId" />
+			<xs:element type="xs:int" name="basketItemId" />
+			<xs:element type="xs:int" name="orderItemId" />
+			<xs:element type="xs:string" name="pubId" />
+			<xs:element type="xs:int" name="pubRev" />
+			<xs:element type="xs:int" name="orderQuantity" />
+			<xs:element type="xs:int" name="contentCount" />
+			<xs:element type="xs:string" name="orderActionType" />
+			<xs:element type="xs:string" name="title" />
+			<xs:element type="xs:string" name="size" />
+			<xs:element type="xs:string" name="jobCode" />
+			<xs:element type="xs:string" name="pagination" />
+			<xs:element type="xs:string" name="finishedSize" />
+			<xs:element type="xs:string" name="numberColours" />
+			<xs:element type="xs:string" name="paperType" />
+			<xs:element type="xs:string" name="paperWeight" />
+			<xs:element type="xs:string" name="printFinishes" />
+			<xs:element type="xs:string" name="binding" />
+			<xs:element type="xs:string" name="mounting" />
+			<xs:element name="ProductFileNameList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductFileName" type="productIdentifier" maxOccurs="unbounded" minOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element type="xs:string" name="nativeTitle" />
+		    <xs:element name="ProductCourierDetail">
+		          <xs:complexType>
+		            <xs:sequence>
+			          <xs:element type="xs:int" name="CourierId"/>
+			          <xs:element type="xs:string" name="TrackingId"/>
+		            </xs:sequence>
+		          </xs:complexType>
+		    </xs:element>      
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BasketItemShippingDetailType">
+		<xs:sequence>
+			<xs:element type="xs:int" name="shippingAddressId" />
+			<xs:element type="xs:string" name="organisation" />
+			<xs:element type="xs:string" name="facilityName" />
+			<xs:element type="xs:string" name="recipientName" />
+			<xs:element type="xs:string" name="address1" />
+			<xs:element type="xs:string" name="address2" />
+			<xs:element type="xs:string" name="address3" />
+			<xs:element type="xs:string" name="city" />
+			<xs:element type="xs:string" name="state" />
+			<xs:element type="xs:string" name="postCode" />
+			<xs:element type="xs:string" name="country" />
+			<xs:element type="xs:string" name="phone" />
+			<xs:element type="xs:string" name="fax" />
+			<xs:element type="xs:string" name="emailAddress" />
+			<xs:element type="xs:string" name="shipMethod" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

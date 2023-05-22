@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           targetNamespace="x-schema:InventoryOrder.xsd" 
+           elementFormDefault="qualified" 
+           xmlns:io="x-schema:InventoryOrder.xsd" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+           
+  <xs:element name="InventoryOrder" type="io:InventoryOrderPacketType"/>
+  <xs:complexType name="InventoryOrderItemType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="orderId"/>
+      <xs:element type="xs:string" name="pubId"/>
+      <xs:element type="xs:int" name="pubRev"/>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="xs:int" name="orderQuantity"/>      
+      <xs:element type="xs:int" name="shipQuantity"/>      
+      <xs:element type="xs:string" name="shipName1"/>
+      <xs:element type="xs:string" name="shipName2"/>
+      <xs:element type="xs:string" name="address1"/>
+      <xs:element type="xs:string" name="address2"/>
+      <xs:element type="xs:string" name="address3"/>
+      <xs:element type="xs:string" name="city"/>
+      <xs:element type="xs:string" name="state"/>
+      <xs:element type="xs:string" name="postCode"/>
+      <xs:element type="xs:string" name="country"/>
+      <xs:element type="xs:string" name="fax"/>
+      <xs:element type="xs:string" name="shipMethod"/>
+      <xs:element type="xs:string" name="size"/>
+      <xs:element type="xs:string" name="pagination"/>
+      <xs:element type="xs:string" name="finishedSize"/>
+      <xs:element type="xs:string" name="numberColours"/>
+      <xs:element type="xs:string" name="paperType"/>
+      <xs:element type="xs:string" name="paperWeight"/>
+      <xs:element type="xs:string" name="printFinishes"/>
+      <xs:element type="xs:string" name="binding"/>
+      <xs:element type="xs:string" name="mounting"/>
+      <xs:element type="xs:string" name="fileName"/>
+      <xs:element type="xs:string" name="nativeTitle"/>
+      <xs:element type="xs:string" name="billingAccount"/>   
+      <xs:element type="xs:string" name="clientOrderId"/>   
+      <xs:element type="xs:string" name="shippingAddressId"/>   
+      <xs:element type="xs:string" name="basketId"/>   
+      <xs:element type="xs:string" name="orderType"/>      
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="InventoryOrderPacketType">
+    <xs:sequence>
+      <xs:element type="io:InventoryOrderItemType" name="InventoryOrderItem" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>
